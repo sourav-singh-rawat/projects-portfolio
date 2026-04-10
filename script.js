@@ -177,6 +177,27 @@ function renderAppSummary(summary) {
   return p;
 }
 
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      const img = entry.target;
+
+      if (img.dataset.src) {
+        img.src = img.dataset.src;
+        img.removeAttribute("data-src");
+      }
+
+      observer.unobserve(img);
+    });
+  },
+  {
+    rootMargin: "100px", // preload before visible
+    threshold: 0.1,
+  },
+);
+
 /**
  * Screenshot row block (.shot-row)
  */
@@ -199,9 +220,20 @@ function renderMediaRow(items, type) {
       const img = document.createElement("img");
       img.src = item;
       img.alt = "Screenshot";
-      img.loading = "eager";
-      img.style.height = "100%";
+      img.loading = "lazy";
+      img.decoding = "async";
+      img.style.height = "auto";
       img.style.width = "100%";
+      img.style.background = "#eef1f5";
+      img.style.transition = "filter 0.3s ease";
+      img.style.filter = "blur(10px)";
+      img.onload = () => {
+        img.style.filter = "none";
+      };
+
+      // lazy load
+      observer.observe(img);
+
       shot.appendChild(img);
     } else if (item.type === "video" && item.src) {
       // Video object
