@@ -1,0 +1,42 @@
+[
+  {
+    "id": "app1",
+    "companyId": "alitas-ai",
+    "name": "Smart Assistant Pro",
+    "tagline": "Your AI‑powered productivity sidekick",
+    "summary": "A mobile app that helps busy professionals manage tasks, meetings, and emails using AI.",
+    "icon": "assets/icons/smart-assistant.png",
+    "tags": ["iPhone", "iPad", "Android"],
+    "links": {
+      "ios": "https://apps.apple.com/app/smart-assistant",
+      "android": "https://play.google.com/store/apps/details?id=com.smart.assistant"
+    },
+    "videos": [],
+    "phone_screenshots": [
+      "assets/screenshots/smart-assistant-1.jpg",
+      "assets/screenshots/smart-assistant-2.jpg"
+    ],
+    "tablet_screenshots": [
+      "assets/screenshots/smart-assistant-ipad-1.jpg"
+    ]
+  },
+  {
+    "id": "app2",
+    "companyId": "startup-x",
+    "name": "TaskFlow",
+    "tagline": "Turn chaos into checked‑off tasks",
+    "summary": "A simple, beautiful task manager for teams and individuals.",
+    "icon": "assets/icons/taskflow.png",
+    "tags": ["iPhone", "Android"],
+    "links": {
+      "ios": "https://apps.apple.com/app/taskflow",
+      "android": "https://play.google.com/store/apps/details?id=com.taskflow"
+    },
+    "videos": [],
+    "phone_screenshots": [
+      "assets/screenshots/taskflow-1.jpg",
+      "assets/screenshots/taskflow-2.jpg"
+    ],
+    "tablet_screenshots": []
+  }
+]
