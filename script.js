@@ -35,14 +35,10 @@ function renderCompanyHeader(company) {
   header.appendChild(logo);
   header.appendChild(text);
 
-  const shareBtn = renderShareButton((e) => {
-    e.preventDefault();
-    e.stopPropagation();
-
+  const shareBtn = renderShareButton(() => {
     const url = new URL(window.location.href);
     url.hash = `#${company.id}`;
-    console.log(url);
-    copyAndNotify(url.toString());
+    return url.toString();
   });
 
   header.appendChild(shareBtn);
@@ -109,7 +105,11 @@ function renderAppHead(app, shareCallback) {
     actions.appendChild(btn);
   }
 
-  const shareBtn = renderShareButton();
+  const shareBtn = renderShareButton(() => {
+    const url = new URL(window.location.href);
+    url.hash = `#${company.id}`;
+    return url.toString();
+  });
 
   actions.appendChild(shareBtn);
 
@@ -120,14 +120,19 @@ function renderAppHead(app, shareCallback) {
   return head;
 }
 
-function renderShareButton(callback) {
+function renderShareButton(textCallback) {
   const shareBtn = document.createElement("button");
-  shareBtn.className = "share-btn";
+  shareBtn.className = "share-btn btn";
   shareBtn.title = "Copy link to this section";
   shareBtn.innerHTML = "🔗";
   shareBtn.ariaLabel = "Copy link";
   shareBtn.type = "button";
-  shareBtn.addEventListener("click", callback);
+  shareBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const text = textCallback();
+    copyAndNotify(text);
+  });
 
   return shareBtn;
 }
@@ -194,7 +199,7 @@ function renderMediaRow(items, type) {
       const img = document.createElement("img");
       img.src = item;
       img.alt = "Screenshot";
-      img.loading = "lazy";
+      img.loading = "eager";
       img.style.height = "100%";
       img.style.width = "100%";
       shot.appendChild(img);
