@@ -222,7 +222,7 @@ function renderMediaRow(items, type) {
       img.alt = "Screenshot";
       img.loading = "lazy";
       img.decoding = "async";
-      img.style.height = "auto";
+      img.style.height = "100%";
       img.style.width = "100%";
       img.style.background = "#eef1f5";
       img.style.transition = "filter 0.3s ease";
