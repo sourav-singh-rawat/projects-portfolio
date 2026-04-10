@@ -199,7 +199,7 @@ function renderMediaRow(items, type) {
       const img = document.createElement("img");
       img.src = item;
       img.alt = "Screenshot";
-      img.loading = "eager";
+      img.loading = "lazy";
       img.style.height = "100%";
       img.style.width = "100%";
       shot.appendChild(img);
