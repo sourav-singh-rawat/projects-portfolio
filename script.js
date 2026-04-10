@@ -51,7 +51,7 @@ function renderCompanyHeader(company) {
 /**
  * App header block (.app-head style)
  */
-function renderAppHead(app, shareCallback) {
+function renderAppHead(app, shareLinkCallback) {
   const head = document.createElement("div");
   head.className = "app-head";
 
@@ -105,11 +105,7 @@ function renderAppHead(app, shareCallback) {
     actions.appendChild(btn);
   }
 
-  const shareBtn = renderShareButton(() => {
-    const url = new URL(window.location.href);
-    url.hash = `#${company.id}`;
-    return url.toString();
-  });
+  const shareBtn = renderShareButton(shareLinkCallback);
 
   actions.appendChild(shareBtn);
 
@@ -265,15 +261,15 @@ function renderMediaRow(items, type) {
 function renderAppCard(app, companyId) {
   const section = document.createElement("article");
   section.className = "app-section";
-  section.id = `${companyId}/${app.id}`;
+  const sectionId = `${companyId}/${app.id}`;
+  section.id = sectionId;
 
-  const head = renderAppHead(app, (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const head = renderAppHead(app, () => {
     const url = new URL(window.location.href);
-    url.hash = `#${app.companyId}/${app.id}`;
-    copyAndNotify(url.toString());
+    url.hash = `#${sectionId}`;
+    return url.toString();
   });
+
   section.appendChild(head);
 
   const main = document.createElement("div");
