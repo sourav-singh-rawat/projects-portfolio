@@ -71,7 +71,7 @@ const companies = [
     description: "AI toys that can listen & talk",
     apps: [
       {
-        id: "pixa-ai",
+        id: "pixa-ai-app",
         name: "Pixa - AI Toys",
         tagline: "AI toys that can listen & talk",
         links: {
@@ -129,7 +129,7 @@ const companies = [
     link: "https://www.linkedin.com/company/69903710/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_position_details%3BoiZmvjH0RyyqlrNuRG2JKw%3D%3D",
     apps: [
       {
-        id: "qoohoo",
+        id: "qoohoo-app",
         name: "qoohoo",
         tagline: "monetize your audience across all platforms",
         links: {
